@@ -14,3 +14,9 @@ build
 .env
 npm-debug.log
 .idea
+
+# backend (Python)
+backend/__pycache__
+backend/**/__pycache__
+backend/venv
+backend/.venv
