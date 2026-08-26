@@ -53,10 +53,10 @@ class Register extends React.Component {
           <div className="row">
 
             <div className="col-md-6 offset-md-3 col-xs-12">
-              <h1 className="text-xs-center">Sign Up</h1>
+              <h1 className="text-xs-center">注册</h1>
               <p className="text-xs-center">
                 <Link to="/login">
-                  Have an account?
+                  已有账号？去登录
                 </Link>
               </p>
 
@@ -69,7 +69,7 @@ class Register extends React.Component {
                     <input
                       className="form-control form-control-lg"
                       type="text"
-                      placeholder="Username"
+                      placeholder="用户名"
                       value={this.props.username}
                       onChange={this.changeUsername} />
                   </fieldset>
@@ -78,7 +78,7 @@ class Register extends React.Component {
                     <input
                       className="form-control form-control-lg"
                       type="email"
-                      placeholder="Email"
+                      placeholder="邮箱"
                       value={this.props.email}
                       onChange={this.changeEmail} />
                   </fieldset>
@@ -87,7 +87,7 @@ class Register extends React.Component {
                     <input
                       className="form-control form-control-lg"
                       type="password"
-                      placeholder="Password"
+                      placeholder="密码"
                       value={this.props.password}
                       onChange={this.changePassword} />
                   </fieldset>
@@ -96,7 +96,7 @@ class Register extends React.Component {
                     className="btn btn-lg btn-primary pull-xs-right"
                     type="submit"
                     disabled={this.props.inProgress}>
-                    Sign up
+                    注册
                   </button>
 
                 </fieldset>

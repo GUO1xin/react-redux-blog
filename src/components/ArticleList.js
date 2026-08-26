@@ -5,14 +5,14 @@ import React from 'react';
 const ArticleList = props => {
   if (!props.articles) {
     return (
-      <div className="article-preview">Loading...</div>
+      <div className="article-preview">加载中...</div>
     );
   }
 
   if (props.articles.length === 0) {
     return (
       <div className="article-preview">
-        No articles are here... yet.
+        这里还没有文章。
       </div>
     );
   }
