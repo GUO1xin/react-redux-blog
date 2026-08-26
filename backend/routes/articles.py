@@ -56,6 +56,13 @@ def list_articles():
         article_ids = [a.id for a in favoriter.favorited_articles]
         query = query.filter(Article.id.in_(article_ids or [-1]))
 
+    keyword = request.args.get('q')
+    if keyword:
+        pattern = f'%{keyword}%'
+        query = query.filter(
+            db.or_(Article.title.ilike(pattern), Article.description.ilike(pattern))
+        )
+
     articles, total = _paginate(query)
     return jsonify({
         'articles': [article.to_dict(g.current_user) for article in articles],
