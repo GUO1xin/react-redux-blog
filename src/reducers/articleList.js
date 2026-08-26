@@ -9,7 +9,9 @@ import {
   PROFILE_PAGE_LOADED,
   PROFILE_PAGE_UNLOADED,
   PROFILE_FAVORITES_PAGE_LOADED,
-  PROFILE_FAVORITES_PAGE_UNLOADED
+  PROFILE_FAVORITES_PAGE_UNLOADED,
+  SEARCH_PAGE_LOADED,
+  SEARCH_PAGE_UNLOADED
 } from '../constants/actionTypes';
 
 export default (state = {}, action) => {
@@ -79,6 +81,17 @@ export default (state = {}, action) => {
       };
     case PROFILE_PAGE_UNLOADED:
     case PROFILE_FAVORITES_PAGE_UNLOADED:
+      return {};
+    case SEARCH_PAGE_LOADED:
+      return {
+        ...state,
+        pager: action.pager,
+        articles: action.payload.articles,
+        articlesCount: action.payload.articlesCount,
+        currentPage: 0,
+        query: action.query
+      };
+    case SEARCH_PAGE_UNLOADED:
       return {};
     default:
       return state;

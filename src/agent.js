@@ -60,6 +60,8 @@ const Articles = {
     requests.get('/articles/feed?limit=10&offset=0'),
   get: slug =>
     requests.get(`/articles/${slug}`),
+  search: (query, page) =>
+    requests.get(`/articles?q=${encode(query)}&${limit(10, page)}`),
   unfavorite: slug =>
     requests.del(`/articles/${slug}/favorite`),
   update: article =>

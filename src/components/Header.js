@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { push } from 'react-router-redux';
+import { store } from '../store';
 
 const LoggedOutView = props => {
   if (!props.currentUser) {
@@ -71,6 +73,23 @@ const LoggedInView = props => {
 };
 
 class Header extends React.Component {
+  constructor() {
+    super();
+    this.state = { query: '' };
+
+    this.handleChange = ev => {
+      this.setState({ query: ev.target.value });
+    };
+
+    this.handleSubmit = ev => {
+      ev.preventDefault();
+      const query = this.state.query.trim();
+      if (query) {
+        store.dispatch(push(`/search/${encodeURIComponent(query)}`));
+      }
+    };
+  }
+
   render() {
     return (
       <nav className="navbar navbar-light">
@@ -79,6 +98,15 @@ class Header extends React.Component {
           <Link to="/" className="navbar-brand">
             {this.props.appName.toLowerCase()}
           </Link>
+
+          <form className="navbar-search-form pull-xs-right" onSubmit={this.handleSubmit}>
+            <input
+              className="form-control"
+              type="text"
+              placeholder="搜索文章"
+              value={this.state.query}
+              onChange={this.handleChange} />
+          </form>
 
           <LoggedOutView currentUser={this.props.currentUser} />
 
